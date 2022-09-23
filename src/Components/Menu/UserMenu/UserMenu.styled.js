@@ -10,8 +10,9 @@ background-color: #bca2b21f;
 
 export const Image = styled.div`
 margin:4px;
-
+color:white;
 `
 export const UserName = styled.span`
 margin: 12px;
+color:white;
 `

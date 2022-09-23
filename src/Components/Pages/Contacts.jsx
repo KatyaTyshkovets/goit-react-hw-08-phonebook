@@ -1,8 +1,6 @@
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from 'Components/ContactList';
 import Filter from 'Components/Filter';
-import { useState,createContext } from 'react';
-import { Btn } from 'Components/Menu/SharedLayout/Btn';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -18,25 +16,14 @@ const Wrapper = styled.div`
   box-shadow: rgb(33 33 33) 0px 2px 10px 1px;
 `;
 
-export const ThemeContext = createContext(null);
 
 
 const ContactsPage =() => {
-    const [theme, setTheme] = useState('dark');
-    
-
-
-    const toggleTheme = () => {
-        setTheme(curr => (curr === 'light' ? 'dark' : 'light'));
-      };
-
-
-    
 
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-             <Container id={theme}>
+        
+             <Container >
               <Wrapper>
             <ContactForm />
             </Wrapper>
@@ -45,8 +32,8 @@ const ContactsPage =() => {
              <ContactList />
              </Wrapper>
              </Container>
-             <Btn theme={theme} toggleTheme={toggleTheme} />
-             </ThemeContext.Provider>
+             
+             
     )
 }
 

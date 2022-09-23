@@ -7,8 +7,7 @@ import { ToastContainer } from "react-toastify";
 import UserMenu from "../UserMenu/UserMenu";
 import useAuth from "Hooks/useAuth";
 import { NavLink } from "react-router-dom";
-import  Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
+import {Toolbar, Container} from "@mui/material";
 import ImportContacts from "@mui/icons-material/ImportContacts";
 import Loader from "Components/Loader/Loader";
 
@@ -26,29 +25,41 @@ font-weight: 400;
   };
 `;
 
+const AppContainer = styled(Toolbar)`
+background-color: #bca2b21f;
+display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  > nav {
+    display: flex;
+  }
+`;
+
 
 export const SharedLayout = () => {
   const isLogin = useAuth();
     return (
-      <>
-      <Container position="static">
-      <Toolbar >
-      <ImportContacts size={80}/>
-          <Logo to="/">
+    
+      <Container position="static" mb={3}>
+      <AppContainer >
+<Logo to="/">
+<ImportContacts size={80}/>
 Книга контактів
-</Logo>
+        </Logo>
 
 {isLogin &&  <NavMenu /> }
           {isLogin ? <UserMenu /> : <AuthMenu />}
-</Toolbar>
-    </Container>
+</AppContainer>
+   
           
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
         <ToastContainer /> 
+        </Container>
         
-        </>
         
     );
   };

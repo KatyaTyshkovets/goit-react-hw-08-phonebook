@@ -1,28 +1,35 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 //import IconButton from '@mui/material/IconButton';
 import useForm from "../../Hooks/useForm";
-import {FormContainer,BoxChecked} from './RegisterForm.styled';
+import {FormContainer,BoxChecked,IconContainer} from './RegisterForm.styled';
 import { initialState } from "./InitialState";
-// import Visibility from '@mui/icons-material/Visibility';
-// import VisibilityOff from '@mui/icons-material/VisibilityOff';
-// import { useState } from 'react';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
+import { NavLink } from 'react-router-dom';
 
 
 const RegisterForm = ({onSubmit}) => {
     const {state, handleChange, handleSubmit} = useForm({initialState, onSubmit})
-   // const [showPassword, setShowPassword] = useState(false);
+  
     const {email, name, password, checked} = state;
 
-
-    // const togglePassword = () => {
-    //     setShowPassword(!showPassword);
-    //   };
+const [type,setType] = useState('text');
+const [icon, setIcon] = useState(Visibility);
+    const togglePassword = () => {
+       if(type === 'password'){
+        setIcon(Visibility);
+        setType('text');
+       }
+       else{
+        setIcon(VisibilityOff);
+        setType('password');
+       }
+      };
     
-    //   const handleMouseDownPassword = (event) => {
-    //     event.preventDefault();
-    //   };
-
+      
+const btnstyle={margin:'5px 0'}
       
     return (
         <FormContainer>
@@ -50,7 +57,7 @@ const RegisterForm = ({onSubmit}) => {
         name="name"
         value={name}
         onChange={handleChange}
-        required
+        fullWidth required
       />
       <TextField
         label="Email"
@@ -58,18 +65,24 @@ const RegisterForm = ({onSubmit}) => {
         name="email"
         value={email}
         onChange={handleChange}
-        required
+        fullWidth required
       />
       <TextField
         label="Password"
-        type='password'
+        type={type}
         name="password"
         value={password}
         onChange={handleChange}
-        required
+       fullWidth required
         helperText="7 symbols at least for password"
 
         />
+        <IconContainer>
+          <span onClick={togglePassword} >
+            <VisibilityOff icon={icon}/>
+            </span> 
+            </IconContainer>
+        
                 <BoxChecked>
                 <label  htmlFor="">Remember me</label>
                 <Checkbox
@@ -78,9 +91,15 @@ const RegisterForm = ({onSubmit}) => {
   inputProps={{ 'aria-label': 'controlled' }}
 />
 </BoxChecked>
-            <Button variant="contained" type="submit">
+            <Button  variant="contained" type="submit" style={btnstyle}>
         Register
       </Button>
+     
+              <Typography> Do you have an a account ?
+                <NavLink to='/login'>
+                  Sign up ?
+                </NavLink>
+              </Typography>
         </Box>
         </FormContainer>
     )

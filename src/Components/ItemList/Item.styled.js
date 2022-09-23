@@ -13,7 +13,7 @@ color: white;
 `;
 
 export const Button = styled.button`
-border: 1px solid darkgreen;
+border: 1px solid darkgrey;
 border-radius: 25px;
 cursor: pointer;
 & :focus , :hover {

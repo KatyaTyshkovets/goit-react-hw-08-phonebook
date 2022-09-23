@@ -56,7 +56,7 @@ const authSlice = createSlice({
     store.loading = false;
     store.error = payload;
 },
-[current.pending]: store => {
+[current.pending]: (store) => {
     store.loading = true;
     store.error = null;
   },

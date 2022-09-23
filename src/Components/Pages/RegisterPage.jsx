@@ -5,7 +5,6 @@ import { getAuthError } from "../../Redux/Auth/Auth-selectors";
 import {toast} from 'react-toastify';
 
 
-
 const RegisterPage = () => {
     const dispatch = useDispatch();
     const {status, message} = useSelector(getAuthError);
@@ -22,13 +21,13 @@ const RegisterPage = () => {
     
 
     return (
-        <div>
-            
+      <>
+    
             <RegisterForm onSubmit={onRegister} />
             {status && <p style={{color: "red"}}>{message}</p>}
-        
             
-        </div>
+           
+       </>
     )
 }
 

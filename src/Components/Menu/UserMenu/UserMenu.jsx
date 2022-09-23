@@ -16,7 +16,7 @@ const onLogout = () => dispatch(logout());
         <AccountCircle />
       </Image>
       <UserName>{`Hello, ${name.toUpperCase()}`}</UserName>
-      <Button variant="contained" type="button" onClick={onLogout}>
+      <Button variant="contained" type="button" onClick={onLogout} color='inherit'>
         < LogoutIcon size="30"/>
       </Button>
     </AppContainer>

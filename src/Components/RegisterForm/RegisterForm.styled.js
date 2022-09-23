@@ -2,8 +2,25 @@ import styled from "@emotion/styled";
 import { FormControl} from "@mui/material";
 import { Container } from "@mui/system";
 import { Button } from "../ContactForm/ContactForm.styled";
-import apple from '../../img/apple.jpeg'
 
+
+export const IconContainer = styled.i`
+display:flex;
+justify-content: space-between;
+align-items:center;
+position:absolute;
+top:49%;
+margin-left:35%;
+`;
+
+export const IconBox = styled.i`
+display:flex;
+justify-content: space-between;
+align-items:center;
+position:absolute;
+top:38%;
+margin-left:35%;
+`;
 
 export const FormContainer = styled(Container)`
 display: flex;
@@ -18,6 +35,9 @@ background:white;
 export const BoxChecked = styled.div`
 
 display: block;
+`
+export const Box = styled.div`
+width:50%;
 `
 export const RedisterForm = styled.form`
 width:50%;
@@ -45,11 +65,10 @@ margin:80px 0 20px 0;
 `
 export const TitleText = styled.h1`
 margin: 3px 0 0 0;
-color:#6d6d6c;
+color:#ffff;
 `
 export const SteledImage = styled.div`
-background-image: url(${apple});
-background-size: cover;
+
 width: 40%;
 margin: 40px 50px 0 0;
 border-radius: 5px;
